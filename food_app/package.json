@@ -7,7 +7,9 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "postinstall": "npx patch-package",
+    "generate-apk":"cd android && ./gradlew assembleRelease"
   },
   "dependencies": {
     "@react-native-community/blur": "^4.4.1",
