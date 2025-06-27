@@ -9,7 +9,7 @@
     "start": "react-native start",
     "test": "jest",
     "postinstall": "npx patch-package",
-    "generate-apk":"cd android && ./gradlew assembleRelease"
+    "generate-apk": "cd android && ./gradlew assembleRelease"
   },
   "dependencies": {
     "@react-native-community/blur": "^4.4.1",
@@ -23,6 +23,7 @@
     "react": "19.0.0",
     "react-native": "^0.79.3",
     "react-native-animated-numbers": "^0.6.3",
+    "react-native-asset": "^2.1.1",
     "react-native-gesture-handler": "^2.25.0",
     "react-native-get-random-values": "^1.11.0",
     "react-native-linear-gradient": "^2.8.3",

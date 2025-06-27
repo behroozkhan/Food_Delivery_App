@@ -50,7 +50,7 @@ export const loginStyles = createStyleSheet(({ colors, device, border }) => ({
     },
     title: {
         textAlign: 'center',
-        marginHorizontal: 20
+        marginHorizontal: 20,
     },
     breakerContainer: {
         alignItems: 'center',
@@ -58,8 +58,8 @@ export const loginStyles = createStyleSheet(({ colors, device, border }) => ({
         gap: 10,
         overflow: "hidden",
         width: '100%',
-        marginTop: 20,
-        marginBottom: 10
+        marginTop: 10,
+        marginBottom: 5
     },
     horizontalLine: {
         height: 1,
@@ -82,9 +82,10 @@ export const loginStyles = createStyleSheet(({ colors, device, border }) => ({
         marginVertical: 5,
         borderRadius: border.md,
     },
+    
     footer: {
         position: "absolute",
-        bottom: 26,
+        bottom: 10,
         alignSelf: 'center',
         width: '100%',
         justifyContent: 'center',
