@@ -8,8 +8,6 @@ import PhoneInput from '@components/ui/PhoneInput'
 import { resetAndNavigate } from '@utils/NavigationUtils'
 import SocialLogin from '@components/ui/SocialLogin'
 import useKeyboardOffsetHeight from '@utils/useKeyboardOffsetHeight'
-// import Ionicons from 'react-native-vector-icons/Ionicons';
-
 
 const LoginScreen: FC = () => {
 
