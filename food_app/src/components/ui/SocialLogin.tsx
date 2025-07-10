@@ -3,7 +3,7 @@ import React, { FC } from 'react'
 import { useStyles } from 'react-native-unistyles'
 import { phoneStyles } from '@unistyles/phoneStyles'
 // import Icon from '@components/global/Icon'
-import Icon from '@components/ui/Icon'
+import Icon from '@components/global/Icon'
 import { RFValue } from 'react-native-responsive-fontsize'
 
 const SocialLogin: FC = () => {

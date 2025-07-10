@@ -1,4 +1,22 @@
 {
-    "java.configuration.updateBuildConfiguration": "interactive",
-    "java.compile.nullAnalysis.mode": "automatic"
+  "java.configuration.updateBuildConfiguration": "disabled",
+  "java.compile.nullAnalysis.mode": "automatic",
+  "java.configuration.excludeFolders": [
+    "**/node_modules",
+    "**/android/app/build",
+    "**/android/build",
+    "**/build"
+  ],
+  "java.errors.incompleteClasspath.severity": "ignore",
+  "java.project.importOnFirstTimeStartup": "disabled",
+  "java.project.referencedLibraries": [],
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/node_modules": true
+  },
+  "search.exclude": {
+    "**/node_modules": true
+  }
 }

@@ -10,7 +10,7 @@
       "@navigation/*": ["src/navigation/*"],
       "@components/*": ["src/components/*"],
       "@unistyles/*": ["src/unistyles/*"],
-      "@states/*": ["src/states/*"],
+      "@state/*": ["src/state/*"],
       "@services/*": ["src/services/*"],
       "@utils/*": ["src/utils/*"]
     }

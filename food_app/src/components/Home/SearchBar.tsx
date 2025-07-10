@@ -4,10 +4,12 @@ import { useStyles } from 'react-native-unistyles'
 import { homeStyles } from '@unistyles/homeStyles'
 import { useSharedState } from '@features/tabs/SharedContext'
 import Animated, { interpolate, useAnimatedStyle } from 'react-native-reanimated'
-import Icon from '@components/ui/Icon'
+import Icon from '@components/global/Icon'
 import { Colors } from '@unistyles/Constants'
 import CustomText from '@components/global/CustomText';
 import RollingContent from 'react-native-rolling-bar';
+import { useAppDispatch, useAppSelector } from '@state/reduxHook.tsx'
+import { setVegMode } from '@state/reducers/userSlices.tsx'
 
 const SearchItems: String[] = [
     'Search "chai smosa"',
@@ -19,8 +21,8 @@ const SearchItems: String[] = [
 
 
 const SearchBar = () => {
-
-    const isVegMode = true;
+    const dispatch = useAppDispatch();
+    const isVegMode = useAppSelector(state => state.user.isVegMode);
     const { styles } = useStyles(homeStyles);
     const { scrollYGlobal } = useSharedState();
     const textColorAnimation = useAnimatedStyle(() => {
@@ -52,7 +54,7 @@ const SearchBar = () => {
                         {SearchItems?.map((item, index) => {
                             return (
                                 <CustomText
-                                    fontSize={20}
+                                    fontSize={18}
                                     fontFamily="Okra-Medium"
                                     key={index}
                                     style={styles.rollingText}
@@ -71,7 +73,7 @@ const SearchBar = () => {
                 </TouchableOpacity>
                 <Pressable
                     style={styles.vegMode}
-                    onPress={() => { }}
+                    onPress={() => dispatch(setVegMode(!isVegMode))}
                 >
                     <Animated.Text style={[textColorAnimation, styles.animatedText]}>
                         VEG
@@ -88,8 +90,8 @@ const SearchBar = () => {
                         // style={styles.switch}
                         source={
                             isVegMode
-                            ? require('@assets/icons/switch_on.png')
-                            : require('@assets/icons/switch_off.png')
+                                ? require('@assets/icons/switch_on.png')
+                                : require('@assets/icons/switch_off.png')
                         }
                         style={styles.switch}
                     />

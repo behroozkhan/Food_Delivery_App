@@ -7,6 +7,7 @@ import { useSharedState } from '@features/tabs/SharedContext';
 import Animated, { Extrapolate, interpolate, useAnimatedStyle } from 'react-native-reanimated';
 import Graphics from '@components/Home/Graphics';
 import HeaderSection from '@components/Home/HeaderSection';
+import MainList from '@components/list/MainList';
 
 const DeliveryScreen: FC = () => {
   const insects = useSafeAreaInsets();
@@ -60,7 +61,9 @@ const DeliveryScreen: FC = () => {
         
       </Animated.View>
       
-      <Animated.View style={moveUpStyle}></Animated.View>
+      <Animated.View style={moveUpStyle} >
+        <MainList/>
+      </Animated.View>
     </View>
   )
 }

@@ -9,9 +9,10 @@ import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated'
 import { Colors, screenWidth } from '@unistyles/Constants';
 import ScalePress from '@components/ui/ScalePress';
 import { DeliveryTabIcon, DiningTabIcon, LiveTabIcon, ReorderTabIcon } from './TabIcon';
+import { useAppSelector } from '@state/reduxHook.tsx';
 
 const CustomTabBar: FC<BottomTabBarProps> = (props) => {
-    const isvegMode = true
+    const isVegMode = useAppSelector(state => state.user.isVegMode);
     const { scrollY } = useSharedState();
     const { state, navigation } = props;
     const bottom = useSafeAreaInsets();
@@ -109,7 +110,7 @@ const CustomTabBar: FC<BottomTabBarProps> = (props) => {
                         {
                             backgroundColor: isLiveTabFocused
                                 ? '#fff'
-                                : isvegMode
+                                : isVegMode
                                     ? Colors.active
                                     : Colors.primary,
                         },

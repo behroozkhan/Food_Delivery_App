@@ -11,6 +11,7 @@ import { FC, memo } from "react"
 import { Image, TextStyle, View, ViewStyle } from "react-native"
 import { RFValue } from "react-native-responsive-fontsize"
 import CustomText from '@components/global/CustomText';
+import { useAppSelector } from '@state/reduxHook.tsx';
 
 interface TabProps {
     name: string
@@ -47,16 +48,15 @@ const textStyleActive: TextStyle = {
 
 
 const TabIcon: FC<TabProps> = memo(({ name }) => {
-    // const isVegMode = true
     return (
         <View style={tabStyles}>
             <Image source={
                 name === 'Delivery' ?
-                 Delivery : name === 'Dining' ?
-                  Dining : name === 'Reorder' ? 
-                  Reorder : Live
-            } 
-            style={styles}
+                    Delivery : name === 'Dining' ?
+                        Dining : name === 'Reorder' ?
+                            Reorder : Live
+            }
+                style={styles}
             />
             <CustomText style={textStyleInActive}>{name}</CustomText>
         </View>
@@ -64,13 +64,13 @@ const TabIcon: FC<TabProps> = memo(({ name }) => {
 })
 
 const TabIconFocused: FC<TabProps> = memo(({ name }) => {
-    const isVegMode = true
+    const isVegMode = useAppSelector(state => state.user.isVegMode);
     return (
         <View style={tabStyles}>
             <Image source={
                 name === 'Delivery' ? DeliveryFoucsed : name === 'Dining' ? DiningFoused : name === 'Reorder' ? ReorderFoused : Live
             }
-            style={[styles, {tintColor: (name === 'Live')? undefined : isVegMode ? Colors.active: Colors.primary}]}
+                style={[styles, { tintColor: (name === 'Live') ? undefined : isVegMode ? Colors.active : Colors.primary }]}
             />
             <CustomText style={textStyleActive}>{name}</CustomText>
         </View>

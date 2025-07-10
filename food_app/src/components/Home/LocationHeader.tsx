@@ -5,7 +5,7 @@ import { useStyles } from 'react-native-unistyles';
 import { homeStyles } from '@unistyles/homeStyles';
 import Animated, { interpolate, useAnimatedStyle } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Icon from '@components/ui/Icon';
+import Icon from '@components/global/Icon';
 import CustomText from '@components/global/CustomText';
 
 const LocationHeader: FC = () => {

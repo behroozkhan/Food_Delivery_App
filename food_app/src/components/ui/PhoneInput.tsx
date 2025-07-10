@@ -3,7 +3,7 @@ import React, { FC } from 'react'
 import { useStyles } from 'react-native-unistyles';
 import { phoneStyles } from '@unistyles/phoneStyles';
 import CustomText from '@components/global/CustomText';
-import Icon from '@components/ui/Icon';
+import Icon from '@components/global/Icon';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 
