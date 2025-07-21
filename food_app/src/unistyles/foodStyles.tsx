@@ -58,10 +58,12 @@ export const foodStyles = createStyleSheet(({ device, colors, border }) => ({
     },
 
     customizeText: {
+        fontSize: 12,
+        fontFamily:"Okra-Medium",
         textAlign: 'center',
         opacity: 0.6,
-        marginTop: 5,
-        bottom: -10,
+        marginTop: 12,
+        // bottom: -5,
     },
     addButtonContainer: (isAdded: boolean) => ({
         width: 120,
@@ -80,10 +82,12 @@ export const foodStyles = createStyleSheet(({ device, colors, border }) => ({
         width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
+        flexDirection:'row',
+        gap:5
     },
     plusSmallIcon: {
         position: "absolute",
-        top: -1,
+        top: -10,
         right: 8
     },
     selectedContainer: {

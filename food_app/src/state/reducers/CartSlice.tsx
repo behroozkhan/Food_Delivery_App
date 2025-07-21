@@ -106,6 +106,49 @@ export const cartSLice = createSlice({
             }
          },
 
+         addCustomizableItem:(
+            state,
+            action: PayloadAction<{
+                restaurant:RestauranDetails;
+                item:CartItem;
+                customization:{
+                    quantity:number;
+                    price:number;
+                    customizationOptions: any[]
+                }
+            }>
+         )=>{
+
+         },
+
+          removeCustomizableItem:(
+            state,
+            action: PayloadAction<{
+            restaurant_id:string;
+            itemId:string;
+            customizationId:string;
+            }>
+         )=>{
+
+         },
+
+         
+          updateCustomizableItem:(
+            state,
+            action: PayloadAction<{
+                restaurant_id:string;
+                itemId:string;
+                customizationId:string;
+                newCustomization: {
+                    quantity:number;
+                    price:number;
+                    customizationOptions: any[]
+                }
+            }>
+         )=>{
+
+         },
+         
 
         clearAllCarts: (state) => {
             state.carts = []
@@ -118,7 +161,7 @@ export const cartSLice = createSlice({
 });
 
 
-export const { addItemToCart, removeItemFromCart, clearAllCarts, clearAllRestaurantCart } = cartSLice.actions;
+export const { addItemToCart, removeItemFromCart, clearAllCarts, clearAllRestaurantCart,addCustomizableItem,removeCustomizableItem,updateCustomizableItem } = cartSLice.actions;
 
 export const selectCart = (state: RootState) => state.cart
 

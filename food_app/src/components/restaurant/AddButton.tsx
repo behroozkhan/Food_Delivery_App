@@ -10,32 +10,79 @@ import Icon from '@components/global/Icon';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { useDispatch } from 'react-redux';
 import { useAppSelector } from '@state/reduxHook';
-import { addItemToCart, removeItemFromCart, selectRestaurantCartItem } from '@state/reducers/CartSlice';
+import { addItemToCart, removeCustomizableItem, removeItemFromCart, selectRestaurantCartItem } from '@state/reducers/CartSlice';
 import CustomModal from '@components/model/CustomModal';
+
+import RepeatItemModal from '@components/model/RepeatItemModal';
+import AddItemModal from '@components/model/AddItemModal';
+import RemoveItemModal from '@components/model/RemoveItemModal';
 
 const AddButton: FC<{ item: any; restaurant: any }> = ({ item, restaurant }) => {
     const { styles } = useStyles(foodStyles);
     const cart = useAppSelector(selectRestaurantCartItem(restaurant?.id, item?.id))
     const dispatch = useDispatch();
     const modelRef = useRef<any>(null);
-    
-    
+
+
+    const openAddModal = () => {
+        modelRef?.current?.openModal(
+            <AddItemModal
+                item={item}
+                onClose={() => modelRef.current?.closeModal()}
+                restaurant={restaurant}
+            />,
+        );
+    };
+
+    const openRepeatModal = () => {
+        modelRef?.current?.openModal(
+            <RepeatItemModal
+                item={item}
+                onClose={() => modelRef.current?.closeModal()}
+                restaurant={restaurant}
+            />,
+        );
+    };
+
+    const openRemoveModal = () => {
+        modelRef?.current?.openModal(
+            <RemoveItemModal
+                item={item}
+                onClose={() => modelRef.current?.closeModal()}
+                restaurant={restaurant}
+            />,
+        );
+    };
+
+
     const addCartHandler = useCallback(() => {
         if (item?.isCustomizable) {
-
-        }else{
-         dispatch(addItemToCart({
-            restaurant:restaurant,
-            item:{...item,customization: []}
-         }))   
+            if (cart != null) {
+                openRepeatModal()
+                return
+            }
+            openAddModal()
+        } else {
+            dispatch(addItemToCart({
+                restaurant: restaurant,
+                item: { ...item, customization: [] }
+            }))
         }
     }, [dispatch, item, restaurant, cart])
-    
-    const remoCartHandler = useCallback(() => {
-        if (item?.isCustomizable) {
 
-        }else{
-            dispatch(removeItemFromCart({restaurant_id:restaurant?.id, itemId: item?.id}))
+    const removeCartHandler = useCallback(() => {
+        if (item?.isCustomizable) {
+            if (cart?.customizations && cart?.customizations?.length > 1) {
+                openRemoveModal();
+                return;
+            }
+            dispatch(removeCustomizableItem({
+                restaurant_id: restaurant?.id,
+                customizationId: cart?.customizations![0]?.id,
+                itemId: item?.id,
+            }),);
+        } else {
+            dispatch(removeItemFromCart({ restaurant_id: restaurant?.id, itemId: item?.id }))
         }
     }, [dispatch, item, restaurant, cart])
 
@@ -47,8 +94,7 @@ const AddButton: FC<{ item: any; restaurant: any }> = ({ item, restaurant }) => 
                 {
                     cart ? (
                         <View style={styles.selectedContainer}>
-                            <ScalePress onPress={remoCartHandler}
-                            >
+                            <ScalePress onPress={removeCartHandler}>
                                 <Icon iconFamily="MaterialCommunityIcons" color='#fff' name="minus-thick" size={RFValue(13)} />
                             </ScalePress>
                             <AnimatedNumber
@@ -62,25 +108,39 @@ const AddButton: FC<{ item: any; restaurant: any }> = ({ item, restaurant }) => 
                             </ScalePress>
                         </View>
                     ) : (
-                        <TouchableOpacity onPress={addCartHandler} style={styles.noSelectionContainer} activeOpacity={0.6} accessibilityLabel='Add item to cart'>
-                            <CustomText fontFamily="Okra-Bold" variant="h5" color={Colors.primary}>
-                                ADD
-                            </CustomText>
-                            <CustomText variant="h5" color={Colors.primary} style={styles.plusSmallIcon}>+</CustomText>
+                        <TouchableOpacity
+                            onPress={addCartHandler}
+                            style={styles.noSelectionContainer}
+                            activeOpacity={0.6}
+                            accessibilityLabel='Add item to cart'>
+                                <CustomText
+                                    fontFamily="Okra-Bold"
+                                    variant="h5"
+                                    color={Colors.primary}>
+                                    ADD
+                                </CustomText>
+                                <CustomText
+                                    variant="h5"
+                                    color={Colors.primary}
+                                    style={styles.plusSmallIcon}>
+                                    +
+                                </CustomText>
+                            
                         </TouchableOpacity>
-                    )
-                }
-            </View>
+                    )};
 
-            {/* <View style={styles.addButtonContainer(false)}> */}
+
+            </View>
             {
                 item?.isCustomizable && (
-                    <CustomText fontFamily="Okra-Medium" style={styles.customizeText}>
+                    // <CustomText fontFamily="Okra-Medium" style={styles.customizeText}>
+                    //     Customisable
+                    // </CustomText>
+                    <Text style={styles.customizeText}>
                         Customisable
-                    </CustomText>
+                    </Text>
                 )
             }
-            {/* </View> */}
         </>
     )
 }
