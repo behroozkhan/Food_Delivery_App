@@ -6,6 +6,7 @@ import { useStyles } from 'react-native-unistyles';
 import { modelStyles } from '@unistyles/modelStyles';
 import CustomText from '@components/global/CustomText';
 import { Colors } from '@unistyles/Constants';
+import MiniFoodCard from '@components/restaurant/MiniFoodCard';
 
 const RepeatItemModal: FC<{
   item: any;
@@ -40,7 +41,16 @@ const RepeatItemModal: FC<{
         contentContainerStyle={
           styles.scrollContainerWhiteBackground
         }>
-
+        {cartItem?.customizations?.map((cus, index) => {
+          return (
+            <MiniFoodCard
+              item={item}
+              cus={cus}
+              key={index}
+              restaurant={restaurant}
+            />
+          );
+        })};
       </ScrollView>
 
 
