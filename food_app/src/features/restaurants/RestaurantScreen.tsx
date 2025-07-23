@@ -10,6 +10,7 @@ import { restaurantItemsData, restaurantsItemfiltersOption } from '@utils/dummyD
 import RestauranHeader from '@components/restaurant/RestauranHeader';
 import DottedLine from '@components/ui/DottedLine';
 import FoodCard from '@components/restaurant/FoodCard';
+import SearchAndOffers from '../../components/restaurant/SearchAndOffers';
 
 const RestaurantScreen: FC = () => {
 
@@ -48,6 +49,7 @@ const RestaurantScreen: FC = () => {
             </View>
           )}
         />
+      <SearchAndOffers item={restaurant} />
       </CustomSafeAreaView>
     </>
   )

@@ -40,7 +40,7 @@ const EditItemModal: FC<{ item: any; restaurant: any; onClose: () => void; cus: 
   const dispatch = useAppDispatch();
   const { styles } = useStyles(modelStyles);
   const [data, setData] = useState({
-    quanitity: cus?.quanitity,
+    quantity: cus?.quantity,
     price: cus?.cartPrice,
     selectedOption: {} as Record<string, number>,
   });
@@ -91,7 +91,7 @@ const EditItemModal: FC<{ item: any; restaurant: any; onClose: () => void; cus: 
     setData(prevData => {
       const updatedSelectedOption = { ...prevData.selectedOption, [type]: index };
       const updatedPrice = calculatePrice(
-        prevData?.quanitity,
+        prevData?.quantity,
         updatedSelectedOption,
       );
       return {
@@ -106,18 +106,18 @@ const EditItemModal: FC<{ item: any; restaurant: any; onClose: () => void; cus: 
   const addCartHandler = () => {
     setData(prevData => ({
       ...prevData,
-      quanitity: prevData?.quanitity + 1,
-      price: calculatePrice(prevData?.quanitity + 1, prevData?.selectedOption),
+      quantity: prevData?.quantity + 1,
+      price: calculatePrice(prevData?.quantity + 1, prevData?.selectedOption),
     }));
   };
 
 
   const removeCartHandler = () => {
-    if (data?.quanitity > 1) {
+    if (data?.quantity > 1) {
       setData(prevData => ({
         ...prevData,
-        quanitity: prevData?.quanitity - 1,
-        price: calculatePrice(prevData?.quanitity - 1, prevData?.selectedOption),
+        quantity: prevData?.quantity - 1,
+        price: calculatePrice(prevData?.quantity - 1, prevData?.selectedOption),
       }));
     } else {
       onClose();
@@ -136,7 +136,7 @@ const EditItemModal: FC<{ item: any; restaurant: any; onClose: () => void; cus: 
       itemId: item?.id,
       customizationId: cus?.id,
       newCustomization: {
-        quantity: data?.quanitity,
+        quantity: data?.quantity,
         price: data?.price,
         customizationOptions: customizationOptions,
       },
@@ -228,7 +228,7 @@ const EditItemModal: FC<{ item: any; restaurant: any; onClose: () => void; cus: 
           </ScalePress>
           <AnimatedNumber includeComma={false}
             animationDuration={300}
-            animateToNumber={data?.quanitity}
+            animateToNumber={data?.quantity}
             fontStyle={styles.animatedCount} />
           <ScalePress onPress={addCartHandler}>
             <Icon

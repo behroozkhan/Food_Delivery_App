@@ -40,7 +40,7 @@ const AddItemModal: FC<{ item: any; restaurant: any; onClose: () => void }> = ({
   const dispatch = useAppDispatch();
   const { styles } = useStyles(modelStyles);
   const [data, setData] = useState({
-    quanitity: 1,
+    quantity: 1,
     price: item?.price,
     selectedOption: {} as Record<string, number>,
   });
@@ -89,7 +89,7 @@ const AddItemModal: FC<{ item: any; restaurant: any; onClose: () => void }> = ({
     setData(prevData => {
       const updatedSelectedOption = { ...prevData.selectedOption, [type]: index };
       const updatedPrice = calculatePrice(
-        prevData?.quanitity,
+        prevData?.quantity,
         updatedSelectedOption,
       );
       return {
@@ -104,18 +104,18 @@ const AddItemModal: FC<{ item: any; restaurant: any; onClose: () => void }> = ({
   const addCartHandler = () => {
     setData(prevData => ({
       ...prevData,
-      quanitity: prevData?.quanitity + 1,
-      price: calculatePrice(prevData?.quanitity + 1, prevData?.selectedOption),
+      quantity: prevData?.quantity + 1,
+      price: calculatePrice(prevData?.quantity + 1, prevData?.selectedOption),
     }));
   };
 
 
   const removeCartHandler = () => {
-    if (data?.quanitity > 1) {
+    if (data?.quantity > 1) {
       setData(prevData => ({
         ...prevData,
-        quanitity: prevData?.quanitity - 1,
-        price: calculatePrice(prevData?.quanitity - 1, prevData?.selectedOption),
+        quantity: prevData?.quantity - 1,
+        price: calculatePrice(prevData?.quantity - 1, prevData?.selectedOption),
       }));
     } else {
       onClose();
@@ -133,7 +133,7 @@ const AddItemModal: FC<{ item: any; restaurant: any; onClose: () => void }> = ({
       restaurant: restaurant,
       item: item,
       customization: {
-        quantity: data?.quanitity,
+        quantity: data?.quantity,
         price: data?.price,
         customizationOptions: customizationOptions,
       },
@@ -174,7 +174,7 @@ const AddItemModal: FC<{ item: any; restaurant: any; onClose: () => void }> = ({
                 </CustomText>
                 <CustomText fontFamily="Okra-Medium" variant='h7' color='#888'>
                   {customization?.required
-                   ? 'Required Select any 1 option'
+                    ? 'Required Select any 1 option'
                     : `Add on your ${customization?.type}`
                   }
                 </CustomText>
@@ -220,7 +220,8 @@ const AddItemModal: FC<{ item: any; restaurant: any; onClose: () => void }> = ({
           </ScalePress>
           <AnimatedNumber includeComma={false}
             animationDuration={300}
-            animateToNumber={data?.quanitity}
+            animateToNumber={data?.quantity
+            }
             fontStyle={styles.animatedCount} />
           <ScalePress onPress={addCartHandler}>
             <Icon
@@ -231,8 +232,8 @@ const AddItemModal: FC<{ item: any; restaurant: any; onClose: () => void }> = ({
           <CustomText color='#fff' fontFamily="Okra-Medium" variant='h5'>
             Add Item - RS {data?.price}
           </CustomText>
-          </TouchableOpacity>
-          <SafeAreaView/>
+        </TouchableOpacity>
+        <SafeAreaView />
       </View>
     </View>
   )

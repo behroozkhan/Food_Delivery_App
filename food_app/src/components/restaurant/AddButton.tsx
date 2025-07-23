@@ -38,17 +38,19 @@ const AddButton: FC<{ item: any; restaurant: any }> = ({ item, restaurant }) => 
         modelRef?.current?.openModal(
             <RepeatItemModal
                 item={item}
-                onClose={() => modelRef.current?.closeModal()}
                 restaurant={restaurant}
+                closeModal={() => modelRef.current?.closeModal()}
+                onOpenAddModal={openAddModal}
             />,
         );
     };
+
 
     const openRemoveModal = () => {
         modelRef?.current?.openModal(
             <RemoveItemModal
                 item={item}
-                onClose={() => modelRef.current?.closeModal()}
+                closeModal={() => modelRef.current?.closeModal()}
                 restaurant={restaurant}
             />,
         );
@@ -113,19 +115,19 @@ const AddButton: FC<{ item: any; restaurant: any }> = ({ item, restaurant }) => 
                             style={styles.noSelectionContainer}
                             activeOpacity={0.6}
                             accessibilityLabel='Add item to cart'>
-                                <CustomText
-                                    fontFamily="Okra-Bold"
-                                    variant="h5"
-                                    color={Colors.primary}>
-                                    ADD
-                                </CustomText>
-                                <CustomText
-                                    variant="h5"
-                                    color={Colors.primary}
-                                    style={styles.plusSmallIcon}>
-                                    +
-                                </CustomText>
-                            
+                            <CustomText
+                                fontFamily="Okra-Bold"
+                                variant="h5"
+                                color={Colors.primary}>
+                                ADD
+                            </CustomText>
+                            <CustomText
+                                variant="h5"
+                                color={Colors.primary}
+                                style={styles.plusSmallIcon}>
+                                +
+                            </CustomText>
+
                         </TouchableOpacity>
                     )};
 
@@ -146,3 +148,5 @@ const AddButton: FC<{ item: any; restaurant: any }> = ({ item, restaurant }) => 
 }
 
 export default memo(AddButton);
+
+
