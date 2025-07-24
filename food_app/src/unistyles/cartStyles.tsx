@@ -4,7 +4,7 @@ import { screenHeight, screenWidth } from './Constants';
 export const cartStyles = createStyleSheet(({ device, colors, border }) => ({
     cartContainer: {
         position: 'absolute',
-        bottom: 0,
+        bottom: 10,
         width: '100%',
         backgroundColor: colors.background,
         alignItems: 'center',

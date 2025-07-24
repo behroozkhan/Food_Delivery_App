@@ -318,7 +318,7 @@ export const cartSLice = createSlice({
         clearAllCarts: (state) => {
             state.carts = []
         },
-        clearAllRestaurantCart: (state, action: PayloadAction<{ restaurant_id: string }>) => {
+        clearRestaurantCart: (state, action: PayloadAction<{ restaurant_id: string }>) => {
             const { restaurant_id } = action.payload
             state.carts = state.carts.filter(cart => cart?.restaurant?.id !== restaurant_id)
         }
@@ -326,7 +326,7 @@ export const cartSLice = createSlice({
 });
 
 
-export const { addItemToCart, removeItemFromCart, clearAllCarts, clearAllRestaurantCart, addCustomizableItem, removeCustomizableItem, updateCustomizableItem } = cartSLice.actions;
+export const { addItemToCart, removeItemFromCart, clearAllCarts, clearRestaurantCart, addCustomizableItem, removeCustomizableItem, updateCustomizableItem } = cartSLice.actions;
 
 export const selectCart = (state: RootState) => state.cart
 

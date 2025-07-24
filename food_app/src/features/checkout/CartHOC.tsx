@@ -49,8 +49,8 @@ const CartHOC: FC = () => {
             isExpand ? styles.expandedCartContainer : styles.cartContainer,
             animatedStyle,
             {
-                // paddingBottom: !isExpand ? bottom.bottom + 60 : 0,
-                paddingBottom: !isExpand ? bottom.bottom + 16 : 0,
+                paddingBottom: !isExpand ? bottom.bottom + 80 : 0,
+                // paddingBottom: !isExpand ? bottom.bottom + 16 : 0,
             },
         ]}>
             {carts?.length > 1 && !isExpand && (
@@ -90,7 +90,7 @@ const CartHOC: FC = () => {
                 </TouchableOpacity>
             )}
 
-            { isExpand ? (
+            {isExpand ? (
                 <ScrollView contentContainerStyle={styles.scrollContainer}>
                     <View style={styles.flexRowBetween}>
                         <CustomText variant='h5' fontFamily="Okra-Medium">
@@ -134,40 +134,40 @@ const CartHOC: FC = () => {
                             </View>
                         );
                     })}
-                </ScrollView> 
-              ) : (
-            <>
-                {carts?.map((item, index) => {
-                    return (
-                        <View key={index}
-                            style={[
-                                { position: !isExpand ? 'absolute' : 'relative' },
-                                !isExpand && {
-                                    transform: [
-                                        { scale: index === totalCartsLength - 1 ? 1 : 0.98 }
-                                    ],
-                                },
-                                !isExpand && {
-                                    top: !isExpand
-                                        ? index === totalCartsLength - 1
-                                            ? 0
-                                            : -8
-                                        : undefined
-                                },
-                                !isExpand && {
-                                    zIndex: !isExpand
-                                        ? index === totalCartsLength - 1
-                                            ? 99
-                                            : 98
-                                        : undefined,
-                                },
-                                isExpand && { width: '100%' }
-                            ]}>
-                            <CartItem item={item} />
-                        </View>
-                    );
-                })}
-            </>
+                </ScrollView>
+            ) : (
+                <>
+                    {carts?.map((item, index) => {
+                        return (
+                            <View key={index}
+                                style={[
+                                    { position: !isExpand ? 'absolute' : 'relative' },
+                                    !isExpand && {
+                                        transform: [
+                                            { scale: index === totalCartsLength - 1 ? 1 : 0.98 }
+                                        ],
+                                    },
+                                    !isExpand && {
+                                        top: !isExpand
+                                            ? index === totalCartsLength - 1
+                                                ? 0
+                                                : -8
+                                            : undefined
+                                    },
+                                    !isExpand && {
+                                        zIndex: !isExpand
+                                            ? index === totalCartsLength - 1
+                                                ? 99
+                                                : 98
+                                            : undefined,
+                                    },
+                                    isExpand && { width: '100%' }
+                                ]}>
+                                <CartItem item={item} />
+                            </View>
+                        );
+                    })}
+                </>
             )};
 
             {
