@@ -8,7 +8,7 @@ export const cartStyles = createStyleSheet(({ device, colors, border }) => ({
         width: '100%',
         backgroundColor: colors.background,
         alignItems: 'center',
-        paddingVertical: 10
+        paddingVertical: 10,
     },
     expandedCartContainer: {
         justifyContent: 'flex-end',
