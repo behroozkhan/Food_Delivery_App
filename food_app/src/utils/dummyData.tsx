@@ -1,7 +1,7 @@
 export const recommendedListData = [
     {
         "id": 1,
-        "name": "Punjabi Dhaba - Ali...",
+        "name": "Karachi Catering - Ali...",
         "discount": "40% OFF",
         "discountAmount": "up to Rs80",
         "time": "25 mins",

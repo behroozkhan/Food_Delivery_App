@@ -1,5 +1,5 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
-import React, { FC, useCallback } from 'react'
+import React, { FC, memo, useCallback } from 'react'
 import { useAppDispatch } from '@state/reduxHook';
 import { useStyles } from 'react-native-unistyles';
 import { modelStyles } from '@unistyles/modelStyles';
@@ -75,4 +75,4 @@ const NonCustomizableCard: FC<{
     )
 }
 
-export default NonCustomizableCard
+export default memo(NonCustomizableCard);

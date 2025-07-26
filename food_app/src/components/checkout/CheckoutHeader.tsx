@@ -14,7 +14,7 @@ const CheckoutHeader: FC<{
             <View style={styles.flexRow}>
                 <View style={styles.flexRowGap}>
                     <Pressable onPress={() => goBack()}>
-                        <Icon name='chevron-black' iconFamily="Ionicons" size={16} />
+                        <Icon name='chevron-back' iconFamily="Ionicons" size={16} />
                     </Pressable>
 
 

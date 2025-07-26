@@ -47,14 +47,14 @@ const ArrowButton: FC<ArrowButtonProps> = ({ loading, title, onPress, price }) =
                 <CustomText
                     fontSize={12}
                     variant='h6'
-                    style={{ color: 'white', top: -1}}
+                    style={{ color: '#fff', top: -1}}
                     fontFamily="Okra-Bold">
                     {title}
                 </CustomText>
                 {loading ? (
                     <ActivityIndicator
                         size="small"
-                        color="white"
+                        color="#fff"
                         style={{ marginHorizontal: 5 }} />
                 ) : (
                     <Icon iconFamily="MaterialIcons" name='arrow-right' color='#fff' size={RFValue(25)} />
