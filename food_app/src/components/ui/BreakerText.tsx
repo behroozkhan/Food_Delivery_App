@@ -19,4 +19,4 @@ const BreakerText: FC<{text: string}> = ({text}) => {
   )
 }
 
-export default BreakerText
+export default BreakerText;

@@ -124,9 +124,9 @@ const LoginScreen: FC = () => {
           keyboardShouldPersistTaps="handled"
           contentContainerStyle={styles.bottomContainer}
         >
-          <CustomText fontFamily="Okra-Bold" variant="h2" style={styles.title}>
+          <Text style={styles.title}>
             Pakista's #1 Food Delivery And App Dining App
-          </CustomText>
+          </Text>
           <BreakerText text='log in or sign up' />
           <PhoneInput
             onFocus={() => { }}

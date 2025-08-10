@@ -20,6 +20,10 @@ export const splashStyles = createStyleSheet(({ colors, device }) => ({
     },
     msgText: {
         textAlign: "center",
+        color:"#fff",
+        fontFamily:"Okra-Medium",
+        fontSize:16,
+        marginTop:5,
     },
     animatedContainer: {
         justifyContent: 'center',
@@ -51,6 +55,8 @@ export const loginStyles = createStyleSheet(({ colors, device, border }) => ({
     title: {
         textAlign: 'center',
         marginHorizontal: 20,
+        fontFamily:"Okra-Bold",
+        fontSize:22,
     },
     breakerContainer: {
         alignItems: 'center',

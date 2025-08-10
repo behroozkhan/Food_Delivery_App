@@ -39,7 +39,7 @@ const OrderSuccessScreen: FC = () => {
         fontSize={12}
         fontFamily="Okra-Bold"
         style={styles.orderPLacedText}>
-        ORDESR PLACED
+        ORDER PLACED
       </CustomText>
       <View style={styles.deliveryContainer}>
         <CustomText

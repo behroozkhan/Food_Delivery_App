@@ -17,7 +17,7 @@ export const SharedStateProvider: FC<{children:ReactNode }>=({children})=>{
     const scrollY = useSharedValue(0);
     const scrollYGlobal = useSharedValue(0);
     const scrollToTop = ()=>{
-        scrollY. value = withTiming(0,{duration:300});
+        scrollY.value = withTiming(0,{duration:300});
         scrollYGlobal.value = withTiming(0,{duration:300});
     }
 

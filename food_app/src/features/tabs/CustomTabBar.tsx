@@ -44,7 +44,7 @@ const CustomTabBar: FC<BottomTabBarProps> = (props) => {
 
     return (
         <>
-        {!isLiveTabFocused && <CartHOC/>}
+            {!isLiveTabFocused && <CartHOC />}
             <Animated.View
                 style={[
                     styles.tabBarContainer,
@@ -122,9 +122,10 @@ const CustomTabBar: FC<BottomTabBarProps> = (props) => {
                 <TouchableOpacity
                     activeOpacity={0.9}
                     style={styles.groceryLogoContainer}
-                    onPress={() => [
-                        Alert.alert('PLease Like And Subscribe!')
-                    ]}
+                    onPress={() => {
+                        Alert.alert('Please Like and Subscribe!');
+                    }}
+
                 >
                     <Image source={require('@assets/icons/grocery.png')} style={styles.groceryLogo} />
 
@@ -135,4 +136,4 @@ const CustomTabBar: FC<BottomTabBarProps> = (props) => {
     );
 }
 
-export default CustomTabBar
+export default CustomTabBar;

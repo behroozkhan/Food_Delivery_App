@@ -35,7 +35,7 @@ const LocationHeader: FC = () => {
                     <View>
                         <TouchableOpacity style={styles.flexRow}>
                             <CustomText variant="h5" color={textColor} fontFamily="Okra-Bold">
-                                Lyari, Chakiwara
+                                Garden, Defence
                             </CustomText>
                             <Icon
                                 name="chevron-down"

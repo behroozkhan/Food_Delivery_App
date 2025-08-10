@@ -28,29 +28,27 @@ const ArrowButton: FC<ArrowButtonProps> = ({ loading, title, onPress, price }) =
             ]}>
             {price != 0 && price && (
                 <View>
-                    <CustomText
-                        variant='h6'
-                        style={{ color: 'white' }}
-                        fontFamily="Okra-Bold">
+                    <Text
+
+                        style={[styles.btnBK, { fontFamily: 'Okra-Bold' }]}
+                    >
                         Rs {price + 34}.0
-                    </CustomText>
-                    <CustomText
-                        fontSize={9}
-                        variant='h6'
-                        style={{ color: 'white' }}
-                        fontFamily="Okra-Medium">
+                    </Text>
+                    <Text
+
+                        style={[styles.btnBK, { fontSize: 9 }]}
+                    >
                         TOTAL
-                    </CustomText>
+                    </Text>
                 </View>
             )}
             <View style={styles.flexRow}>
-                <CustomText
-                    fontSize={12}
-                    variant='h6'
-                    style={{ color: '#fff', top: -1}}
-                    fontFamily="Okra-Bold">
+                <Text
+
+                    style={[styles.btnBK, { top: -1, fontFamily: "Okra-Bold" }]}
+                >
                     {title}
-                </CustomText>
+                </Text>
                 {loading ? (
                     <ActivityIndicator
                         size="small"
@@ -76,6 +74,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         borderRadius: 12,
         marginHorizontal: 15,
+    },
+    btnBK: {
+        color: '#fff',
+        fontFamily: "Okra-Medium",
+        fontSize: 12,
     },
     flexRow: {
         flexDirection: 'row',
